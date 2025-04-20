@@ -8,7 +8,7 @@ int main() {
     // Nível Novato - Movimentação das Peças
 //Movimento da Torre 5 casa para direita
 
-int Torre;
+int Torre=0;
 printf("Movimentacao da Torre:\n");
 while (Torre<5)
 {
