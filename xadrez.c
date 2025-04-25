@@ -1,53 +1,56 @@
 #include <stdio.h>
-
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
-int main() {
-    // Nível Novato - Movimentação das Peças
-//Movimento da Torre 5 casa para direita
-
-int Torre=0;
-printf("Movimentacao da Torre:\n");
-while (Torre<5)
-{
-    printf("Direita\n");
-    Torre ++;
-}
-
-//Movimento do Bispo
- int Bispo=0;
- printf("Movimentacao do Bispo:\n");
-do{
-    printf("Cima,Direita\n");
-    Bispo++;
-}while (Bispo<5);
-
-//Movimento da Rainha
-int Rainha;
-printf("Movimentaçao da Rainha:\n");
-for(Rainha=0;Rainha<8;Rainha++){
-    printf("Esquerda\n");
-}
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    printf("Movimento do cavalo\n");
-int cavaloE,cavaloB;
-for(cavaloE=0;cavaloE<=1;cavaloE++){
-    for (cavaloB=0; cavaloB < 2; cavaloB++)
-    {
-        printf("baixo\n");
+//Declarando a funçao dos Movimentos
+void movimentoTorre(int t){
+    if(t>0){
+        printf("Direita\n");
+        movimentoTorre(t-1);
     }
-    printf("esquerda\n");
+}
+void movimentoBispo(int b){
+    if(b>0){
+        for(int bispoD=0;bispoD<1;bispoD++){
+            for(int bispoC=0;bispoC<1;bispoC++){
+                printf("Cima,");
+            }
+            printf("Direita\n");
+        }
+        movimentoBispo(b-1);
+    }
 }
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
-    return 0;
+void movimentoRainha(int r){
+    if(r>0){
+        printf("Esquerda\n");
+        movimentoRainha(r-1);
+    }
 }
+
+int main()
+{
+ //Movimento da Torre 5 casa para direita
+ printf("Movimentacao da Torre:\n");
+ int torre=5;
+ movimentoTorre(torre);
+
+//Movimento do Bispo 5 casas para diagonal
+ printf("Movimentacao do Bispo:\n");
+int Bispo=5;
+movimentoBispo(Bispo);
+
+//Movimento da Rainha 8 casa para esquerda
+printf("Movimentaçao da Rainha:\n");
+int Rainha=8;
+movimentoRainha(Rainha);
+// Movimento do cavalo
+printf("Movimento do cavalo\n");
+int cavaloE,cavaloB;
+for(cavaloE=0,cavaloB=0;cavaloE<=1;cavaloE++,cavaloB = 0){
+    for (; cavaloB < 2; cavaloB++)
+    {
+        printf("cima\n");
+    }
+    printf("direita\n");
+}
+
+}
+
